@@ -1,5 +1,5 @@
 const CommentRepository = require('../../../Domains/comments/CommentRepository');
-const Comment = require('../../../Domains/comments/entities/Comment');
+const Reply = require('../../../Domains/replies/entities/Reply')
 const DeleteReplyUseCase = require('../DeleteReplyUseCase');
 
 describe('DeleteReplyUseCase', () => {
@@ -12,7 +12,7 @@ describe('DeleteReplyUseCase', () => {
         const credential = {
             username: 'another-user',
         };
-        const expectedGetCommentById = new Comment({
+        const expectedGetCommentById = new Reply({
             id: 'comment-123',
             content: 'dicoding',
             username: 'user',
@@ -43,7 +43,7 @@ describe('DeleteReplyUseCase', () => {
         const credential = {
             username: 'user',
         };
-        const expectedGetCommentById = new Comment({
+        const expectedGetCommentById = new Reply({
             id: 'comment-123',
             content: 'dicoding',
             username: 'user',

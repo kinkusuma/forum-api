@@ -24,12 +24,9 @@ describe('AddReplyUseCase', () => {
         const mockCommentRepository = new CommentRepository();
         const mockThreadRepository = new ThreadRepository();
 
-        mockThreadRepository.getThreadById = jest.fn()
-            .mockImplementation(() => Promise.resolve());
-        mockCommentRepository.getCommentById = jest.fn()
-            .mockImplementation(() => Promise.resolve());
-        mockCommentRepository.addComment = jest.fn()
-            .mockImplementation(() => Promise.resolve(expectedAddedReply));
+        mockThreadRepository.getThreadById = jest.fn(() => Promise.resolve());
+        mockCommentRepository.getCommentById = jest.fn(() => Promise.resolve());
+        mockCommentRepository.addComment = jest.fn(() => Promise.resolve(expectedAddedReply));
 
         const getCommentUseCase = new AddReplyUseCase({
             commentRepository: mockCommentRepository,
