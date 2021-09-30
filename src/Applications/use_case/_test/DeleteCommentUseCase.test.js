@@ -3,63 +3,59 @@ const Comment = require('../../../Domains/comments/entities/Comment');
 const DeleteCommentUseCase = require('../DeleteCommentUseCase');
 
 describe('DeleteCommentUseCase', () => {
-    it('should throw error if username is not equal', async() => {
-        const params = {
-            threadId: 'thread-123',
-            commentId: 'comment-123',
+  it('should throw error if username is not equal', async () => {
+    const params = {
+      threadId: 'thread-123',
+      commentId: 'comment-123',
 
-        };
-        const credential = {
-            username: 'another-user',
-        };
-        const expectedGetCommentById = new Comment({
-            id: 'comment-123',
-            content: 'dicoding',
-            username: 'user',
-            date: '2021-14-09',
-            is_delete: false,
-        });
-        const mockCommentRepository = new CommentRepository();
-        mockCommentRepository.getCommentById = jest.fn()
-            .mockImplementation(() => Promise.resolve(expectedGetCommentById));
-        mockCommentRepository.deleteComment = jest.fn()
-            .mockImplementation(() => Promise.resolve());
+    };
+    const credential = {
+      username: 'another-user',
+    };
+    const expectedGetCommentById = new Comment({
+      id: 'comment-123',
+      content: 'dicoding',
+      username: 'user',
+      date: '2021-14-09',
+      isDelete: false,
+    });
+    const mockCommentRepository = new CommentRepository();
+    mockCommentRepository.getCommentById = jest.fn(() => Promise.resolve(expectedGetCommentById));
+    mockCommentRepository.deleteComment = jest.fn(() => Promise.resolve());
 
-        const deleteCommentUseCase = new DeleteCommentUseCase({
-            commentRepository: mockCommentRepository,
-        });
-
-        await expect(deleteCommentUseCase.execute(credential, params))
-            .rejects
-            .toThrowError('akses ditolak');
+    const deleteCommentUseCase = new DeleteCommentUseCase({
+      commentRepository: mockCommentRepository,
     });
 
-    it('should orchestrating the delete comment action correctly', async() => {
-        const params = {
-            threadId: 'thread-123',
-            commentId: 'comment-123',
+    await expect(deleteCommentUseCase.execute(credential, params))
+      .rejects
+      .toThrowError('akses ditolak');
+  });
 
-        };
-        const credential = {
-            username: 'user',
-        };
-        const expectedGetCommentById = new Comment({
-            id: 'comment-123',
-            content: 'dicoding',
-            username: 'user',
-            date: '2021-09-14',
-            is_delete: false,
-        });
-        const mockCommentRepository = new CommentRepository();
-        mockCommentRepository.getCommentById = jest.fn()
-            .mockImplementation(() => Promise.resolve(expectedGetCommentById));
-        mockCommentRepository.deleteComment = jest.fn()
-            .mockImplementation(() => Promise.resolve());
+  it('should orchestrating the delete comment action correctly', async () => {
+    const params = {
+      threadId: 'thread-123',
+      commentId: 'comment-123',
 
-        const deleteCommentUseCase = new DeleteCommentUseCase({
-            commentRepository: mockCommentRepository,
-        });
-
-        await deleteCommentUseCase.execute(credential, params);
+    };
+    const credential = {
+      username: 'user',
+    };
+    const expectedGetCommentById = new Comment({
+      id: 'comment-123',
+      content: 'dicoding',
+      username: 'user',
+      date: '2021-09-14',
+      isDelete: false,
     });
+    const mockCommentRepository = new CommentRepository();
+    mockCommentRepository.getCommentById = jest.fn(() => Promise.resolve(expectedGetCommentById));
+    mockCommentRepository.deleteComment = jest.fn(() => Promise.resolve());
+
+    const deleteCommentUseCase = new DeleteCommentUseCase({
+      commentRepository: mockCommentRepository,
+    });
+
+    await deleteCommentUseCase.execute(credential, params);
+  });
 });
