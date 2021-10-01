@@ -1,22 +1,18 @@
-class GetThreadUseCase {
-    constructor({ threadRepository, commentRepository, likeRepository }) {
-        this._threadRepository = threadRepository;
-        this._commentRepository = commentRepository;
-        this._likeRepository = likeRepository;
-    }
+const NewThread = require('../../Domains/threads/entities/NewThread');
 
-    async execute(params) {
-        const { threadId } = params;
-        const thread = await this._threadRepository.getThreadById(threadId);
-        const comment = await this._commentRepository.getCommentByPostId(threadId);
+class AddThreadUseCase {
+  constructor({ threadRepository }) {
+    this._threadRepository = threadRepository;
+  }
 
-        await Promise.all(comment.map(async(element, index) => {
-            comment[index].replies = await this._commentRepository.getCommentByOtherCommentId(element.id);
-            comment[index].likeCount = await this._likeRepository.getLikes(element.id)
-        }));
-        thread.comments = comment;
-        return thread;
-    }
+  async execute(payload, credential) {
+    const { title, body } = payload;
+    const owner = credential.id;
+    const newThread = new NewThread({ owner, title, body });
+    return this._threadRepository.addThread(
+      newThread,
+    );
+  }
 }
 
-module.exports = GetThreadUseCase;
+module.exports = AddThreadUseCase;
