@@ -20,10 +20,12 @@ DomainErrorTranslator._directories = {
     'THREAD.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat membuat thread baru karena properti yang dibutuhkan tidak ada'),
     'THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat membuat thread baru karena tipe data tidak sesuai'),
     'THREAD.NOT_FOUND': new InvariantError('thread tidak ditemukan'),
-    'COMMENT.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat membuat komentar baru karena properti yang dibutuhkan tidak ada'),
-    'COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat membuat komentar baru karena tipe data tidak sesuai'),
-    'REPLY.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat membuat balasan baru karena properti yang dibutuhkan tidak ada'),
-    'REPLY.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat membuat balasan baru karena tipe data tidak sesuai'),
+    'COMMENT.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat mengomentari karena properti yang dibutuhkan tidak ada'),
+    'COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat mengomentari karena tipe data tidak sesuai'),
+    'REPLY.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat membalas karena properti yang dibutuhkan tidak ada'),
+    'REPLY.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat membalas karena tipe data tidak sesuai'),
+    'LIKE.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('tidak dapat menyukai karena properti yang dibutuhkan tidak ada'),
+    'LIKE.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('tidak dapat menyukai karena tipe data tidak sesuai'),
 
 };
 
