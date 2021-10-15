@@ -17,7 +17,7 @@ describe('a AddedComment Entities', () => {
     // Arrange
     const payload = {
       id: 'comment-123',
-      content: 'Dicoding Indonesia',
+      content: 'lorem ipsum',
       username: 'user',
     };
 
